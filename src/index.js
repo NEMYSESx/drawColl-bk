@@ -1,6 +1,10 @@
 import { createServer } from "http";
 import { WebSocket, WebSocketServer } from "ws";
+import dotenv from "dotenv";
 
+dotenv.config();
+const port = process.env.PORT;
+console.log(port);
 const server = createServer();
 const wss = new WebSocketServer({ server });
 
@@ -44,6 +48,6 @@ wss.on("connection", (client) => {
   });
 });
 
-server.listen(8000, () => {
+server.listen(port, () => {
   console.log("WebSocket server is running on ws://localhost:8000");
 });
